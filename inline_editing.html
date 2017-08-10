@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+# 1. Inline Editing
+Create a component for live writing (inline input).
+
+## TODO:
+1. Createaplaceholdertext.
+2. After clicking the placeholder change it to the input.
+3. After click enter or focus out on input change it to normal text and display typed value
+-->
+
+<html>
+<head>
+<title>Inline Editing</title>
+</head>
+<body>
+
+<p id="elemToChange" onclick="swapToInput();">click me</p>
+
+<script>
+var bCallOnce = true;
+
+function swapToInput() {
+   console.log("onclick dbg");
+
+
+   var element = document.getElementById('elemToChange');
+   element.parentNode.removeChild(element);
+
+   var newElementInput = document.createElement("INPUT");
+   document.body.appendChild(newElementInput);
+   newElementInput.setAttribute("id", "elemInput");
+   newElementInput.setAttribute("onfocusout", "showText(null)");
+   newElementInput.setAttribute("onkeypress", "showText(event)");
+   newElementInput.focus();
+   
+}
+
+function showText(e) {
+console.log("onfocusout/onkeypress dbg" + e);
+   if ((e == null || e.keyCode == 13) && bCallOnce) {	
+	   bCallOnce = false;
+	   var elementInput = document.getElementById('elemInput');
+	   if (typeof(elementInput) != 'undefined' && elementInput != null) {
+		   console.log("removing elementInput");
+		   elementInput.parentNode.removeChild(elementInput);
+		   elementInput.setAttribute("onfocusout", null);
+		   elementInput.setAttribute("onkeypress", null);
+
+		   var elementToChange = document.createElement("P");
+		   elementToChange.innerHTML  = elementInput.value;
+		   document.body.appendChild(elementToChange);
+		}
+   }
+}
+</script>
+</body>
+</html>

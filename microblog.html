@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+# 2. Microblog
+Create a simple microblog with list of posts and form to adding a new one.
+
+## TODO:
+1. Display mocked posts list
+2. Create a form to adding a new post.
+3. Add a notifications to inform a creator that post was added.
+4. Create a simple voting system for each post.(5)+|(10)-
+5. Import from external file(JSON) 3 default articles
+6. Do not forget about possibility to remove posts
+7. Display current count of articles
+-->
+<html>
+<head>
+<title>Microblog</title>
+	<script src="jscode.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div class="alert-box success hide" id="notify"><span>success: </span>New Post has been added successfully</div>
+<p id="title">Posts [<span id="cnt">2</span>]:</p>
+<ul id="posts">
+	<li>
+		<div id="d3">
+			<img src="pic1.jpg" width="80" height="80" />
+			<label for="name">Where can I get some</label>
+	       	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic </p>
+	       	<button class="pure-button" id="b1" onclick="doVote('b1', 0);">+ upvote</button>
+	       	<button class="pure-button" id="b2" onclick="doVote('b2', 1);">- downvote</button>
+	       	<button class="pure-button" id="r3" onclick="removePost('d3');">remove post</button>
+       	</div>
+    </li>
+
+	<li>
+		<div id="d6">
+			<img src="pic2.jpg" width="80" height="80" />
+			<label for="name">Where does it come from</label>
+	       	<p>ng Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishin</p>
+	       	<button class="pure-button" id="b4" onclick="doVote('b4', 0);">+ upvote</button>
+	       	<button class="pure-button" id="b5" onclick="doVote('b5', 1);">- downvote</button>
+	       	<button class="pure-button" id="r6" onclick="removePost('d6');">remove post</button>
+       	</div>
+    </li>
+</ul>
+
+<div id="newPost">
+	<h3>Add New Post</h3>
+	<form name="myform" action="javascript:handleIt(false, null, null, null)">
+		<input type="file" id="pic">
+		<label>Topic:</label><input type="text" id="topic" style="width:270px" />
+		<label>Post:</label><textarea id="content" style="width:270px"></textarea>
+	    <input name="Submit"  type="submit" value="Send Post" />
+	</form>
+</div>
+<div id="loadJson">
+	<h3>Load Data From JSON File</h3>
+	<input type="file" id="importData" value="import posts from file" /></div>
+</div>
+<script>
+	document.getElementById('pic').addEventListener('change', handleFileSelect, false);
+	document.getElementById("importData").addEventListener('change', importJsonDataFromFile, false);
+</script>
+</body>
+</html>

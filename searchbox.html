@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+# 3. Searchbox
+Create a simple searchbox for a example list of 10 colors names.
+
+## TODO:
+1. Create an input to allow user to type a search query
+2. Display a list of colors.
+3. Display the most accurate color in the page title of the browser's tab
+4. Add a button to clear the searchbox
+5. After clicking a search result color change the color of it to green.
+-->
+
+<html>
+<head>
+<title>Searchbox</title>
+<script>
+var arr = ['yellow','green','red','blue', 'black', 'white', 'gray', 'brown', 'pink', 'silver'];
+
+document.addEventListener('DOMContentLoaded', function() {
+   console.log("page loaded");
+   var ulElem = document.createElement("ul");
+
+   for (var i=0; i<arr.length; i++) {
+   	   var liElement = document.createElement("li");
+   	   liElement.innerHTML = arr[i];
+   	   ulElem.appendChild(liElement);
+   }
+
+   document.getElementById("colorList").appendChild(ulElem);
+
+}, false);
+
+function handleSearch() {
+	var elemSearchTxt = document.getElementById("searchtxt");
+	var textToSearch = elemSearchTxt.value;
+	
+
+	for (var i=0; i<arr.length; i++) {
+    	console.log("dbg: " + arr[i]);
+    	if (arr[i].startsWith(textToSearch)) {
+    		document.title = arr[i];		
+    		return;
+    	}
+	}
+}
+
+function highlight() {
+	var searchtxtElem = document.getElementById("searchtxt");
+	if (searchtxt.value != "") {
+		searchtxtElem.style.backgroundColor = "green";
+	}
+}
+
+
+function clearSearchBox() {
+	 document.getElementById("searchtxt").value = '';
+	 searchtxtElem.style.backgroundColor = "white";
+}
+</script>
+</head>
+<body>
+	<input type="text" id="searchtxt" onclick="highlight(); return false;" />
+	<input type="button" value="Search" onclick="handleSearch(); return false;" />
+	<input type="button" value="Clear" onfocus="clearSearchBox()" />
+	<div id="colorList"></div>
+</body>
+</html>

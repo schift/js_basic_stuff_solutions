@@ -1,0 +1,46 @@
+	li {
+ 		 display: block; 
+         float: none;
+         overflow: hidden;
+         padding: 10px 0 10px 3%;
+         width: 90%
+	    }
+ 	label {
+ 		display: block;
+ 		font-weight: bold;
+ 	}
+ 	input {
+ 		display: block
+ 	}
+ 	#newPost, #loadJson {
+ 		display: block;
+ 		margin-left: 80px;
+ 		padding-left: 20px;
+ 		padding-top: 20px;
+ 		padding-bottom: 20px;
+ 		border:1px solid black;
+ 		width: 300px;
+ 	}
+ 	.alert-box {
+	    color:#555;
+	    border-radius:10px;
+	    font-family:Tahoma,Geneva,Arial,sans-serif;font-size:11px;
+	    padding:10px 10px 10px 36px;
+	    margin:10px;
+	}
+	.alert-box span {
+	    font-weight:bold;
+	    text-transform:uppercase;
+	}
+	.success {
+	    background:#e9ffd9;
+	    border:1px solid #a6ca8a;
+	}
+	.show {
+        -o-transition: opacity 3s;
+        -moz-transition: opacity 3s;
+        -webkit-transition: opacity 3s;
+        transition: opacity 3s;
+        opacity:1;
+    }
+    .hide{  opacity:0; }
